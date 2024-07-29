@@ -16,3 +16,8 @@ int open_file(
 #### Parameters
 - `path: (const char*) -` Path to the file to be opened.
 - `flags: (int) -` Flags that determine how the file is opened, such as **O_RDONLY** for *reading* or **O_WRONLY** for *writing*.
+
+<br>
+
+#### Returns
+- `Returns: (int) -` File descriptor if opening is successful; **-1** if an error occurs.
