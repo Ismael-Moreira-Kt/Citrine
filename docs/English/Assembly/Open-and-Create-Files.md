@@ -18,3 +18,8 @@ int open_file_asm(
 - `path: (const char*) -` The path to the file to be opened. This should be a ***null-terminated* string**.
 - `flags: (int) -` Flags that specify how the file should be opened. Examples include **O_RDONLY**, **O_WRONLY**, **O_RDWR**, and **O_CREAT**.
 - `mode: (mode_t) -` The permissions mode for the file, used only if the file is being created. Examples include **0666** for standard permissions.
+
+<br>
+
+#### Returns
+- `Returns: (int) -` A file descriptor if the call is successful; **-1** if an error occurs.
