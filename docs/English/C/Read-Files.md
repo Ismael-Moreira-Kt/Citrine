@@ -16,3 +16,6 @@ ssize_t read_file(int fd, void *buffer, size_t count);
 - `count: (size_t) -` The number of bytes to read from the file descriptor.
 
 <br>
+
+#### Returns
+`Returns: (ssize_t) -` The number of bytes read if the read operation is successful; -1 if an error occurs.
