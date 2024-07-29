@@ -13,3 +13,13 @@ int create_file(const char *path, mode_t mode) {
     }
     return fd;
 }
+
+
+
+int open_file(const char *path, int flags) {
+    int fd = open_file_asm(path, flags, 0);
+    if (fd == -1) {
+        perror("Error opening file");
+    }
+    return fd;
+}
