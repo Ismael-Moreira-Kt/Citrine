@@ -14,3 +14,8 @@ ssize_t read_file_asm(int fd, void *buffer, size_t count);
 - `fd: (int) -` The file descriptor from which to read. This must be a valid file descriptor obtained from an open file.
 - `buffer: (void*) -` A pointer to the buffer where the read data will be stored. The buffer must be large enough to hold count bytes.
 - `count: (size_t) -` The number of bytes to read from the file descriptor.
+
+<br>
+
+#### Returns
+- `Returns: (ssize_t) -` The number of bytes read if the call is successful; -1 if an error occurs.
