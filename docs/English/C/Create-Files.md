@@ -10,3 +10,9 @@ int create_file(
     mode_t mode
 );
 ```
+
+<br>
+
+#### Parameters
+- `path: (const char*) -` Path to the file to be created.
+- `mode: (mode_t) -` Permissions to be assigned to the new file. Example: 0666 for read and write permissions for everyone.
