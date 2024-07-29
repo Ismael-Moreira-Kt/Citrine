@@ -11,6 +11,7 @@
 
 int open_file_asm(const char *path, int flags, mode_t mode);
 ssize_t read_file_asm(int fd, void *buffer, size_t count);
+ssize_t write_file_asm(int fd, const void *buffer, size_t count);
 
 
 
