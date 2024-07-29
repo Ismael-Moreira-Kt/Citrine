@@ -16,3 +16,8 @@ int create_file(
 #### Parameters
 - `path: (const char*) -` Path to the file to be created.
 - `mode: (mode_t) -` Permissions to be assigned to the new file. Example: 0666 for read and write permissions for everyone.
+
+<br>
+
+#### Returns
+- `Returns: (int) -` File descriptor if creation is successful; **-1** if an error occurs.
