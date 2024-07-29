@@ -3,6 +3,7 @@
 
 
 extern int open_file_asm(const char *path, int flags, mode_t mode);
+extern ssize_t read_file_asm(int fd, void *buffer, size_t count);
 
 
 
@@ -22,4 +23,14 @@ int open_file(const char *path, int flags) {
         perror("Error opening file");
     }
     return fd;
+}
+
+
+
+ssize_t read_file(int fd, void *buffer, size_t count) {
+    ssize_t bytesRead = read_file_asm(fd, buffer, count);
+    if (bytesRead == -1) {
+        perror("Error reading file");
+    }
+    return bytesRead;
 }
