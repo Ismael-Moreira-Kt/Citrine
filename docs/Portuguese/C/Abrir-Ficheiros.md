@@ -10,3 +10,9 @@ int open_file(
     int flags
 );
 ```
+
+<br>
+
+#### Parâmetros
+- `path: (const char*) -` Caminho para o arquivo a ser aberto.
+- `flags: (int) -` Flags que determinam como o arquivo é aberto, como **O_RDONLY** para *leitura* ou **O_WRONLY** para *escrita*.
