@@ -1,0 +1,2 @@
+# Abrir Ficheiros
+A função `open_file` utiliza a função [`open_file_asm`](../Assembly/Abrir-e-Criar-Ficheiros.md) para abrir um arquivo existente com os sinalizadores especificados. Ela **não** cria o arquivo se ele não existir.
