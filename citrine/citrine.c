@@ -256,3 +256,15 @@ char **list_files_in_directory(const char *path, size_t *file_count) {
 
     return file_list;
 }
+
+
+
+int change_file_owner(const char *path, uid_t owner, gid_t group) {
+    int result = chown_file_asm(path, owner, group);
+
+    if (result == -1) {
+        perror("Error changing file owner");
+    }
+
+    return result;
+}
