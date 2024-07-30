@@ -93,3 +93,15 @@ ssize_t get_file_size(CitrineFile *file) {
 
     return -1;
 }
+
+
+
+int create_directory(const char *path, mode_t mode) {
+    int result = mkdir_asm(path, mode);
+
+    if (result == -1) {
+        perror("Error creating directory");
+    }
+
+    return result;
+}
