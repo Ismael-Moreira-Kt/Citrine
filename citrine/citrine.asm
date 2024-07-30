@@ -13,6 +13,7 @@ section .text
     global fstat_file_asm
     global mkdir_asm
     global rename_file_asm
+    global rmdir_asm
 
 
 open_file_asm:
@@ -71,5 +72,11 @@ mkdir_asm:
 
 rename_file_asm:
     mov rax, 82
+    syscall
+    ret
+
+
+rmdir_asm:
+    mov rax, 80
     syscall
     ret
