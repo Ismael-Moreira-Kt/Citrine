@@ -2,21 +2,6 @@
 
 
 
-extern open_file_asm(const char *path, int flags, mode_t mode);
-extern read_file_asm(int fd, void *buffer, size_t count);
-extern write_file_asm(int fd, const void *buffer, size_t count);
-extern close_file_asm(int fd);
-extern set_permissions_asm(const char *path, mode_t mode);
-extern unlink_file_asm(const char *path);
-extern access_file_asm(const char *path, int mode);
-extern fstat_file_asm(int fd, struct stat *statbuf);
-extern mkdir_asm(const char *pathname, mode_t mode);
-extern rename_file_asm(const char *oldpath, const char *newpath);
-extern rmdir_asm(const char *pathname);
-extern fsync_file_asm(int fd);
-
-
-
 CitrineFile open_or_create_file(const char *path, int flags, mode_t mode) {
     CitrineFile file;
 
@@ -155,4 +140,36 @@ int sync_file(CitrineFile *file) {
     }
     
     return result;
+}
+
+
+
+int create_nested_directory(const char *path, mode_t mode) {
+    char *temp_path = strdup(path);
+    if (temp_path == NULL) {
+        perror("Erro ao duplicar caminho");
+        return -1;
+    }
+
+    char *dir = strtok(temp_path, "/");
+    int result = 0;
+    char current_path[1024] = {0};
+
+    while (dir != NULL) {
+        strcat(current_path, dir);
+        printf("Tentando criar o diretório '%s'...\n", current_path);
+        result = mkdir_asm(current_path, mode);
+
+        if (result == -1 && errno != EEXIST) {
+            perror("Erro ao criar diretório");
+            free(temp_path);
+            return -1;
+        }
+
+        strcat(current_path, "/");
+        dir = strtok(NULL, "/");
+    }
+
+    free(temp_path);
+    return 0;
 }
