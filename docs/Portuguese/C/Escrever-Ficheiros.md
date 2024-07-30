@@ -1,2 +1,9 @@
 # Escrever em Ficheiros
 A função `write_file` utiliza [`write_file_asm`](../Assembly/Escrever-Ficheiros.md) para escrever dados de um buffer em um descritor de arquivo. Ela lida com erros, imprimindo uma mensagem de erro se a operação de escrita falhar.
+
+<br><br>
+
+## Assinatura
+```c
+ssize_t write_file(int fd, const void *buffer, size_t count);
+```
