@@ -105,3 +105,15 @@ int create_directory(const char *path, mode_t mode) {
 
     return result;
 }
+
+
+
+int remove_file(const char *path) {
+    int result = unlink_file_asm(path);
+
+    if (result == -1) {
+        perror("Error removing file");
+    }
+
+    return result;
+}
