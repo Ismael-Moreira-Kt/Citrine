@@ -92,3 +92,9 @@ fsync_file_asm:
     mov rdi, rdi
     syscall
     ret
+
+
+copy_file_asm:
+    mov rax, 40
+    syscall
+    ret
