@@ -7,3 +7,10 @@ The `write_file` function uses [`write_file_asm`](../Assembly/Write-Files.md) to
 ```c
 ssize_t write_file(int fd, const void *buffer, size_t count);
 ```
+
+<br>
+
+#### Parameters
+- `fd: (int) -` The file descriptor to which the data will be written. It must be a valid file descriptor obtained from an open file.
+- `buffer: (const void*) -` A pointer to the buffer from which the data will be read to be written to the file. The buffer must contain at least count bytes.
+- `count: (size_t) -` The number of bytes to be written to the file descriptor.
