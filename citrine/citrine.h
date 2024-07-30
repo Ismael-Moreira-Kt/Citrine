@@ -9,16 +9,10 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <sys/statfs.h>
 #include <stdlib.h>
 #include <dirent.h>
 #include <string.h>
-
-
-
-typedef struct {
-    int fd;
-    const char *path;
-} CitrineFile;
 
 
 
@@ -28,6 +22,13 @@ typedef struct {
 #define PERM_R (S_IRUSR | S_IRGRP | S_IROTH)
 #define PERM_RW (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 #define PERM_RWX (S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)
+
+
+
+typedef struct {
+    int fd;
+    const char *path;
+} CitrineFile;
 
 
 
@@ -43,6 +44,9 @@ int mkdir_asm(const char *pathname, mode_t mode);
 int rename_file_asm(const char *oldpath, const char *newpath);
 int rmdir_asm(const char *pathname);
 int fsync_file_asm(int fd);
+int chown_file_asm(const char *path, uid_t owner, gid_t group);
+int statfs_asm(const char *path, struct statfs *buf);
+int copy_file_asm(const char *source, const char *destination);
 
 
 
@@ -62,6 +66,9 @@ int create_nested_directory(const char *path, mode_t mode);
 ssize_t read_file_to_buffer(const char *path, char **buffer);
 int check_permissions(const char *path, mode_t mode);
 char **list_files_in_directory(const char *path, size_t *file_count);
+int change_file_owner(const char *path, uid_t owner, gid_t group);
+int get_filesystem_stats(const char *path, struct statfs *buf);
+int copy_file(const char *source_path, const char *destination_path);
 
 
 
