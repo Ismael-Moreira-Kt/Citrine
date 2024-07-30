@@ -104,3 +104,9 @@ chown_file_asm:
     mov rax, 92
     syscall
     ret
+
+
+statfs_asm:
+    mov rax, 137
+    syscall
+    ret
