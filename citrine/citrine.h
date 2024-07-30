@@ -15,6 +15,15 @@ typedef struct {
 
 
 
+#define PERM_RW_OWNER (S_IRUSR | S_IWUSR)
+#define PERM_RWX_OWNER (S_IRUSR | S_IWUSR | S_IXUSR)
+#define PERM_RW_OWNER_R_ALL (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+#define PERM_R (S_IRUSR | S_IRGRP | S_IROTH)
+#define PERM_RW (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+#define PERM_RWX (S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)
+
+
+
 int open_file_asm(const char *path, int flags, mode_t mode);
 ssize_t read_file_asm(int fd, void *buffer, size_t count);
 ssize_t write_file_asm(int fd, const void *buffer, size_t count);
