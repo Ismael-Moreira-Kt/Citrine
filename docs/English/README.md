@@ -24,3 +24,9 @@ make
 
 ## Usage
 To use the Citrine library in your project, include the citrine.h header and link with the library when compiling. For usage examples and information about the methods, visit the [documentation](./C/README.md) and the [usage examples](../../examples/).
+
+<br><br>
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](../../LICENSE) file for more details.
