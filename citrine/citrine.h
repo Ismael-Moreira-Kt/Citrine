@@ -6,6 +6,9 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 
 
 typedef struct {
@@ -29,6 +32,10 @@ ssize_t read_file_asm(int fd, void *buffer, size_t count);
 ssize_t write_file_asm(int fd, const void *buffer, size_t count);
 int close_file_asm(int fd);
 int set_permissions_asm(const char *path, mode_t mode);
+int unlink_file_asm(const char *path);
+int access_file_asm(const char *path, int mode);
+int fstat_file_asm(int fd, struct stat *statbuf);
+int mkdir_asm(const char *pathname, mode_t mode);
 
 
 
