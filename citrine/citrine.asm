@@ -14,6 +14,7 @@ section .text
     global mkdir_asm
     global rename_file_asm
     global rmdir_asm
+    global fsync_file_asm
 
 
 open_file_asm:
@@ -78,5 +79,11 @@ rename_file_asm:
 
 rmdir_asm:
     mov rax, 80
+    syscall
+    ret
+
+
+fsync_file_asm:
+    mov rax, 95
     syscall
     ret
