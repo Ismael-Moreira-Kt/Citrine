@@ -22,4 +22,9 @@ git clone https://github.com/Ismael-Moreira-Kt/Citrine
 <br><br>
 
 ## Uso
-Para utilizar a biblioteca Citrine em seu projeto, inclua o cabeçalho `citrine.h` e link com a biblioteca ao compilar. Se quiser ter acesso a exemplos de uso e informação acerca dos métodos, visite a [documentação](./C/README.md) e os [exemplos de uso](../../examples/). 
+Para utilizar a biblioteca Citrine em seu projeto, inclua o cabeçalho `citrine.h` e link com a biblioteca ao compilar. Se quiser ter acesso a exemplos de uso e informação acerca dos métodos, visite a [documentação](./C/README.md) e os [exemplos de uso](../../examples/).
+
+<br><br>
+
+## Licença
+Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](../../LICENSE) para mais detalhes.
