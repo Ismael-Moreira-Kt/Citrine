@@ -132,3 +132,15 @@ int rename_file(const char *oldpath, const char *newpath) {
     
     return result;
 }
+
+
+
+int remove_directory(const char *path) {
+    int result = rmdir_asm(path);
+    
+    if (result == -1) {
+        perror("Error removing directory");
+    }
+    
+    return result;
+}
