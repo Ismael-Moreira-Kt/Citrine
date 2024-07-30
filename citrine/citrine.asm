@@ -24,3 +24,9 @@ write_file_asm:
     mov rax, 1
     syscall
     ret
+
+
+close_file_asm:
+    mov rax, 3
+    syscall
+    ret
