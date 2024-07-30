@@ -23,6 +23,8 @@ void listFilesInDirectory();
 void changeFileOwner();
 void copyFile();
 void getFileSystemStats();
+void setFilePermissions();
+void fileExists();
 
 
 

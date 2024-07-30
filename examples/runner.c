@@ -48,8 +48,14 @@ int main() {
     print_section("Get File Size");
     getFileSize();
 
+    print_section("File Exists");
+    fileExists();
+
     print_section("Sync File");
     syncFile();
+
+    print_section("Set Permissions");
+    setFilePermissions();
 
     print_section("Check Permissions");
     checkPermissions();
