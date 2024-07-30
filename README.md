@@ -19,3 +19,8 @@ cd build
 cmake ..
 make
 ```
+
+<br><br>
+
+## Usage
+To use the Citrine library in your project, include the citrine.h header and link with the library when compiling. For usage examples and information about the methods, visit the [documentation](./docs/English/C/README.md) and the [usage examples](./examples/).
