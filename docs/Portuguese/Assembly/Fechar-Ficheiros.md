@@ -12,3 +12,8 @@ int close_file_asm(int fd);
 
 #### Parâmetros
 - `fd: (int) -` O descritor de arquivo a ser fechado. Deve ser um descritor de arquivo válido obtido de um arquivo aberto.
+
+<br>
+
+#### Retorno
+- `Retorna: (int) -` Retorna 0 se a chamada for bem-sucedida; -1 se ocorrer um erro.
