@@ -1,0 +1,2 @@
+# Writing Files
+The `write_file` function uses [`write_file_asm`](../Assembly/Write-Files.md) to write data from a buffer to a file descriptor. It handles errors, printing an error message if the write operation fails.
