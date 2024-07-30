@@ -2,6 +2,7 @@
 #define CITRINE_H
 
 
+
 #include <sys/types.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -9,6 +10,8 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <stdlib.h>
+#include <dirent.h>
+#include <string.h>
 
 
 
@@ -55,6 +58,10 @@ int remove_file(const char *path);
 int rename_file(const char *oldpath, const char *newpath);
 int remove_directory(const char *path);
 int sync_file(CitrineFile *file);
+int create_nested_directory(const char *path, mode_t mode);
+ssize_t read_file_to_buffer(const char *path, char **buffer);
+int check_permissions(const char *path, mode_t mode);
+char **list_files_in_directory(const char *path, size_t *file_count);
 
 
 

@@ -2,21 +2,6 @@
 
 
 
-extern open_file_asm(const char *path, int flags, mode_t mode);
-extern read_file_asm(int fd, void *buffer, size_t count);
-extern write_file_asm(int fd, const void *buffer, size_t count);
-extern close_file_asm(int fd);
-extern set_permissions_asm(const char *path, mode_t mode);
-extern unlink_file_asm(const char *path);
-extern access_file_asm(const char *path, int mode);
-extern fstat_file_asm(int fd, struct stat *statbuf);
-extern mkdir_asm(const char *pathname, mode_t mode);
-extern rename_file_asm(const char *oldpath, const char *newpath);
-extern rmdir_asm(const char *pathname);
-extern fsync_file_asm(int fd);
-
-
-
 CitrineFile open_or_create_file(const char *path, int flags, mode_t mode) {
     CitrineFile file;
 
@@ -155,4 +140,113 @@ int sync_file(CitrineFile *file) {
     }
     
     return result;
+}
+
+
+
+int create_nested_directory(const char *path, mode_t mode) {
+    char *temp_path = strdup(path);
+    if (temp_path == NULL) {
+        perror("Erro ao duplicar caminho");
+        return -1;
+    }
+
+    char *dir = strtok(temp_path, "/");
+    int result = 0;
+    char current_path[1024] = {0};
+
+    while (dir != NULL) {
+        strcat(current_path, dir);
+        printf("Tentando criar o diretório '%s'...\n", current_path);
+        result = mkdir_asm(current_path, mode);
+
+        if (result == -1 && errno != EEXIST) {
+            perror("Erro ao criar diretório");
+            free(temp_path);
+            return -1;
+        }
+
+        strcat(current_path, "/");
+        dir = strtok(NULL, "/");
+    }
+
+    free(temp_path);
+    return 0;
+}
+
+
+
+ssize_t read_file_to_buffer(const char *path, char **buffer) {
+    CitrineFile file = open_or_create_file(path, O_RDONLY, 0);
+    
+    if (file.fd == -1) return -1;
+
+    ssize_t size = get_file_size(&file);
+    
+    if (size == -1) {
+        close_file(&file);
+        return -1;
+    }
+
+    *buffer = (char *)malloc(size);
+    
+    if (*buffer == NULL) {
+        perror("Error allocating buffer");
+        close_file(&file);
+    
+        return -1;
+    }
+
+    ssize_t bytesRead = read_from_file(&file, *buffer, size);
+    close_file(&file);
+    
+    return (bytesRead == size) ? size : -1;
+}
+
+
+
+int check_permissions(const char *path, mode_t mode) {
+    struct stat st;
+    
+    if (access_file_asm(path, F_OK) != -1) {
+        if (fstat_file_asm(open_file_asm(path, O_RDONLY, 0), &st) == 0) {
+            if ((st.st_mode & mode) == mode) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+
+
+char **list_files_in_directory(const char *path, size_t *file_count) {
+    DIR *dir;
+    struct dirent *entry;
+    char **file_list = NULL;
+    size_t count = 0;
+
+    dir = opendir(path);
+    
+    if (dir == NULL) {
+        perror("Error opening directory");
+    
+        return NULL;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type == DT_REG) {
+            file_list = (char **)realloc(file_list, sizeof(char *) * (count + 1));
+            file_list[count] = strdup(entry->d_name);
+    
+            count++;
+        }
+    }
+    
+    closedir(dir);
+
+    *file_count = count;
+    
+    return file_list;
 }
