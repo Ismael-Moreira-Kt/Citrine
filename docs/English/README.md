@@ -1,4 +1,4 @@
-Citrine
+# Citrine
 Citrine is a C library that provides an interface for file and directory operations, including creation, reading, writing, removal, and manipulation of permissions and properties of files and directories. The library uses system calls directly to perform these operations, providing an efficient and straightforward way to handle files and directories on the system.
 
 <br><br>
@@ -23,10 +23,10 @@ make
 <br><br>
 
 ## Usage
-To use the Citrine library in your project, include the citrine.h header and link with the library when compiling. For usage examples and information about the methods, visit the [documentation](./docs/English/C/README.md) and the [usage examples](./examples/).
+To use the Citrine library in your project, include the citrine.h header and link with the library when compiling. For usage examples and information about the methods, visit the [documentation](./C/README.md) and the [usage examples](../../examples/).
 
 <br><br>
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](../../LICENSE) file for more details.
