@@ -268,3 +268,35 @@ int change_file_owner(const char *path, uid_t owner, gid_t group) {
 
     return result;
 }
+
+
+
+int copy_file(const char *source_path, const char *destination_path) {
+    CitrineFile src_file = open_or_create_file(source_path, O_RDONLY, 0);
+    if (src_file.fd == -1) return -1;
+
+    CitrineFile dest_file = open_or_create_file(destination_path, O_WRONLY | O_CREAT | O_TRUNC, PERM_RW_OWNER);
+    if (dest_file.fd == -1) {
+        close_file(&src_file);
+        return -1;
+    }
+
+    char buffer[4096];
+    ssize_t bytes_read;
+    while ((bytes_read = read_from_file(&src_file, buffer, sizeof(buffer))) > 0) {
+        if (write_to_file(&dest_file, buffer, bytes_read) != bytes_read) {
+            perror("Error writing to destination file");
+            close_file(&src_file);
+            close_file(&dest_file);
+            return -1;
+        }
+    }
+
+    if (bytes_read == -1) {
+        perror("Error reading from source file");
+    }
+
+    close_file(&src_file);
+    close_file(&dest_file);
+    return (bytes_read == -1) ? -1 : 0;
+}
