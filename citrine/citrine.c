@@ -6,6 +6,7 @@ extern int open_file_asm(const char *path, int flags, mode_t mode);
 extern ssize_t read_file_asm(int fd, void *buffer, size_t count);
 extern ssize_t write_file_asm(int fd, const void *buffer, size_t count);
 extern int close_file_asm(int fd);
+extern int set_permissions_asm(const char *path, mode_t mode);
 
 
 
@@ -66,3 +67,14 @@ int close_file(int fd) {
  
     return result;
 }
+
+
+
+int set_permissions(const char *path, mode_t mode) {
+    int result = set_permissions_asm(path, mode);
+    
+    if (result == -1) {
+        perror("Error setting permissions");
+    }
+    
+    return result;
