@@ -7,3 +7,8 @@ A função `close_file_asm` é uma implementação em assembly que realiza uma c
 ```c
 int close_file_asm(int fd);
 ```
+
+<br>
+
+#### Parâmetros
+- `fd: (int) -` O descritor de arquivo a ser fechado. Deve ser um descritor de arquivo válido obtido de um arquivo aberto.
