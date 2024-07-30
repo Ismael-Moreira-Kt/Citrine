@@ -16,3 +16,6 @@ ssize_t write_file_asm(int fd, const void *buffer, size_t count);
 - `count: (size_t) -` O número de bytes a serem escritos no descritor de arquivo.
 
 <br>
+
+#### Retorno
+- `Retorna: (ssize_t) -` O número de bytes escritos se a chamada for bem-sucedida; -1 se ocorrer um erro.
