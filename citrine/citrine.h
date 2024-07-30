@@ -44,6 +44,10 @@ ssize_t read_from_file(CitrineFile *file, void *buffer, size_t count);
 ssize_t write_to_file(CitrineFile *file, const void *buffer, size_t count);
 int close_file(CitrineFile *file);
 int set_file_permissions(const char *path, mode_t mode);
+int file_exists(const char *path);
+ssize_t get_file_size(CitrineFile *file);
+int create_directory(const char *path, mode_t mode);
+int remove_file(const char *path);
 
 
 
