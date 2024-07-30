@@ -13,3 +13,8 @@ int set_permissions(const char *path, mode_t mode);
 #### Parâmetros
 - `path: (const char *) -` O caminho para o arquivo cujas permissões serão alteradas. Deve ser uma string terminada em nulo.
 - `mode: (mode_t) -` As novas permissões a serem definidas para o arquivo. Exemplos incluem 0666 para permissões padrão de leitura e escrita.
+
+<br>
+
+#### Retorno
+- `Retorna: (int) -` Retorna 0 se a operação for bem-sucedida; -1 se ocorrer um erro.
