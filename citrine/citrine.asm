@@ -98,3 +98,9 @@ copy_file_asm:
     mov rax, 40
     syscall
     ret
+
+
+chown_file_asm:
+    mov rax, 92
+    syscall
+    ret
