@@ -202,3 +202,19 @@ ssize_t read_file_to_buffer(const char *path, char **buffer) {
     
     return (bytesRead == size) ? size : -1;
 }
+
+
+
+int check_permissions(const char *path, mode_t mode) {
+    struct stat st;
+    
+    if (access_file_asm(path, F_OK) != -1) {
+        if (fstat_file_asm(open_file_asm(path, O_RDONLY, 0), &st) == 0) {
+            if ((st.st_mode & mode) == mode) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
