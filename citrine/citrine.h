@@ -51,6 +51,10 @@ int set_file_permissions(const char *path, mode_t mode);
 int file_exists(const char *path);
 ssize_t get_file_size(CitrineFile *file);
 int create_directory(const char *path, mode_t mode);
+int remove_file(const char *path);
+int rename_file(const char *oldpath, const char *newpath);
+int remove_directory(const char *path);
+int sync_file(CitrineFile *file);
 
 
 
