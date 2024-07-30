@@ -11,6 +11,9 @@ extern unlink_file_asm(const char *path);
 extern access_file_asm(const char *path, int mode);
 extern fstat_file_asm(int fd, struct stat *statbuf);
 extern mkdir_asm(const char *pathname, mode_t mode);
+extern rename_file_asm(const char *oldpath, const char *newpath);
+extern rmdir_asm(const char *pathname);
+extern fsync_file_asm(int fd);
 
 
 
@@ -115,5 +118,17 @@ int remove_file(const char *path) {
         perror("Error removing file");
     }
 
+    return result;
+}
+
+
+
+int rename_file(const char *oldpath, const char *newpath) {
+    int result = rename_file_asm(oldpath, newpath);
+    
+    if (result == -1) {
+        perror("Error renaming file");
+    }
+    
     return result;
 }
