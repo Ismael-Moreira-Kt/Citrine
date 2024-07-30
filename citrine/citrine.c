@@ -218,3 +218,35 @@ int check_permissions(const char *path, mode_t mode) {
 
     return 0;
 }
+
+
+
+char **list_files_in_directory(const char *path, size_t *file_count) {
+    DIR *dir;
+    struct dirent *entry;
+    char **file_list = NULL;
+    size_t count = 0;
+
+    dir = opendir(path);
+    
+    if (dir == NULL) {
+        perror("Error opening directory");
+    
+        return NULL;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type == DT_REG) {
+            file_list = (char **)realloc(file_list, sizeof(char *) * (count + 1));
+            file_list[count] = strdup(entry->d_name);
+    
+            count++;
+        }
+    }
+    
+    closedir(dir);
+
+    *file_count = count;
+    
+    return file_list;
+}
