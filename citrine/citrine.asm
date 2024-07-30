@@ -6,6 +6,8 @@ section .text
     global open_file_asm
     global read_file_asm
     global write_file_asm
+    global close_file_asm
+    global set_permissions_asm
 
 
 open_file_asm:
@@ -28,5 +30,11 @@ write_file_asm:
 
 close_file_asm:
     mov rax, 3
+    syscall
+    ret
+
+
+set_permissions_asm:
+    mov rax, 90
     syscall
     ret
