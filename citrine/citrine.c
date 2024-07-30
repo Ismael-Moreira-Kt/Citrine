@@ -173,3 +173,32 @@ int create_nested_directory(const char *path, mode_t mode) {
     free(temp_path);
     return 0;
 }
+
+
+
+ssize_t read_file_to_buffer(const char *path, char **buffer) {
+    CitrineFile file = open_or_create_file(path, O_RDONLY, 0);
+    
+    if (file.fd == -1) return -1;
+
+    ssize_t size = get_file_size(&file);
+    
+    if (size == -1) {
+        close_file(&file);
+        return -1;
+    }
+
+    *buffer = (char *)malloc(size);
+    
+    if (*buffer == NULL) {
+        perror("Error allocating buffer");
+        close_file(&file);
+    
+        return -1;
+    }
+
+    ssize_t bytesRead = read_from_file(&file, *buffer, size);
+    close_file(&file);
+    
+    return (bytesRead == size) ? size : -1;
+}
