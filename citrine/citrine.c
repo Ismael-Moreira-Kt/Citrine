@@ -144,3 +144,15 @@ int remove_directory(const char *path) {
     
     return result;
 }
+
+
+
+int sync_file(CitrineFile *file) {
+    int result = fsync_file_asm(file->fd);
+    
+    if (result == -1) {
+        perror("Error syncing file");
+    }
+    
+    return result;
+}
