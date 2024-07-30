@@ -300,3 +300,15 @@ int copy_file(const char *source_path, const char *destination_path) {
     close_file(&dest_file);
     return (bytes_read == -1) ? -1 : 0;
 }
+
+
+
+int get_filesystem_stats(const char *path, struct statfs *buf) {
+    int result = statfs_asm(path, buf);
+
+    if (result == -1) {
+        perror("Error getting filesystem statistics");
+    }
+
+    return result;
+}
