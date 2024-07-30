@@ -12,11 +12,11 @@ git clone https://github.com/Ismael-Moreira-Kt/Citrine
 
 - Se quiser ter uma prévia do que a biblioteca pode fazer:
 ```bash
-    cd Citrine
-    mkdir build
-    cd build
-    cmake ..
-    make
+cd Citrine
+mkdir build
+cd build
+cmake ..
+make
 ```
 
 <br><br>
