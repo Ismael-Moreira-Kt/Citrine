@@ -10,6 +10,7 @@ section .text
     global set_permissions_asm
     global unlink_file_asm
     global access_file_asm
+    global fstat_file_asm
 
 
 open_file_asm:
@@ -50,5 +51,11 @@ unlink_file_asm:
 
 access_file_asm:
     mov rax, 21
+    syscall
+    ret
+
+
+fstat_file_asm:
+    mov rax, 5
     syscall
     ret
