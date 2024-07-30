@@ -8,6 +8,10 @@ section .text
     global write_file_asm
     global close_file_asm
     global set_permissions_asm
+    global unlink_file_asm
+    global access_file_asm
+    global fstat_file_asm
+    global mkdir_asm
 
 
 open_file_asm:
@@ -36,5 +40,29 @@ close_file_asm:
 
 set_permissions_asm:
     mov rax, 90
+    syscall
+    ret
+
+
+unlink_file_asm:
+    mov rax, 87
+    syscall
+    ret
+
+
+access_file_asm:
+    mov rax, 21
+    syscall
+    ret
+
+
+fstat_file_asm:
+    mov rax, 5
+    syscall
+    ret
+
+
+mkdir_asm:
+    mov rax, 83
     syscall
     ret
