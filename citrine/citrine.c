@@ -80,3 +80,16 @@ int set_file_permissions(const char *path, mode_t mode) {
 int file_exists(const char *path) {
     return (access_file_asm(path, F_OK) != -1);
 }
+
+
+
+ssize_t get_file_size(CitrineFile *file) {
+    struct stat st;
+
+    if (fstat_file_asm(file->fd, &st) == 0)
+        return st.st_size;
+
+    perror("Error getting file size");
+
+    return -1;
+}
