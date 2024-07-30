@@ -8,6 +8,12 @@
 #include <stdio.h>
 
 
+typedef struct {
+    int fd;
+    const char *path;
+} CitrineFile;
+
+
 
 int open_file_asm(const char *path, int flags, mode_t mode);
 ssize_t read_file_asm(int fd, void *buffer, size_t count);
@@ -17,12 +23,11 @@ int set_permissions_asm(const char *path, mode_t mode);
 
 
 
-int create_file(const char *path, mode_t mode);
-int open_file(const char *path, int flags);
-ssize_t read_file(int fd, void *buffer, size_t count);
-ssize_t write_file(int fd, const void *buffer, size_t count);
-int close_file(int fd);
-int set_permissions(const char *path, mode_t mode);
+CitrineFile open_or_create_file(const char *path, int flags, mode_t mode);
+ssize_t read_from_file(CitrineFile *file, void *buffer, size_t count);
+ssize_t write_to_file(CitrineFile *file, const void *buffer, size_t count);
+int close_file(CitrineFile *file);
+int set_file_permissions(const char *path, mode_t mode);
 
 
 
