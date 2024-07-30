@@ -78,3 +78,4 @@ int set_permissions(const char *path, mode_t mode) {
     }
     
     return result;
+}
