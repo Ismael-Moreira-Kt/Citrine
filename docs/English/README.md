@@ -1,2 +1,2 @@
-Citrine
+# Citrine
 Citrine is a C library that provides an interface for file and directory operations, including creation, reading, writing, removal, and manipulation of permissions and properties of files and directories. The library uses system calls directly to perform these operations, providing an efficient and straightforward way to handle files and directories on the system.
