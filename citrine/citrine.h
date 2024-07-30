@@ -37,6 +37,9 @@ int unlink_file_asm(const char *path);
 int access_file_asm(const char *path, int mode);
 int fstat_file_asm(int fd, struct stat *statbuf);
 int mkdir_asm(const char *pathname, mode_t mode);
+int rename_file_asm(const char *oldpath, const char *newpath);
+int rmdir_asm(const char *pathname);
+int fsync_file_asm(int fd);
 
 
 
@@ -48,7 +51,6 @@ int set_file_permissions(const char *path, mode_t mode);
 int file_exists(const char *path);
 ssize_t get_file_size(CitrineFile *file);
 int create_directory(const char *path, mode_t mode);
-int remove_file(const char *path);
 
 
 
