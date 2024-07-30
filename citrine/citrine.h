@@ -66,6 +66,9 @@ int create_nested_directory(const char *path, mode_t mode);
 ssize_t read_file_to_buffer(const char *path, char **buffer);
 int check_permissions(const char *path, mode_t mode);
 char **list_files_in_directory(const char *path, size_t *file_count);
+int change_file_owner(const char *path, uid_t owner, gid_t group);
+int get_filesystem_stats(const char *path, struct statfs *buf);
+int copy_file(const char *source_path, const char *destination_path);
 
 
 
