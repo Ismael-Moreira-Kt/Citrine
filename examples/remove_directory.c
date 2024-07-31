@@ -2,8 +2,8 @@
 
 
 
-void removeDirectory() {
-    int result = remove_directory("example_dir");
+void __removeDirectory() {
+    int result = removeDirectory("example_dir");
     
     if (result == 0) {
         printf("Directory removed successfully.\n");

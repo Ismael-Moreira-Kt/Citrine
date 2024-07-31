@@ -2,9 +2,9 @@
 
 
 
-void getFileSystemStats() {
+void __getFileSystemStats() {
     struct statfs fs_stats;
-    int result = get_filesystem_stats("/", &fs_stats);
+    int result = getFileStats("/", &fs_stats);
     
     if (result == 0) {
         printf("Filesystem stats:\n");
