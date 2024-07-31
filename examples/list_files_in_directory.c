@@ -2,9 +2,9 @@
 
 
 
-void listFilesInDirectory() {
+void _listFilesInDirectory() {
     size_t file_count;
-    char **files = list_files_in_directory(".", &file_count);
+    char **files = listFiles(".", &file_count);
     
     if (files != NULL) {
         printf("Files in directory:\n");
