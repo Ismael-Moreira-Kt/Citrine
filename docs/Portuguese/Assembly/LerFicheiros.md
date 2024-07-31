@@ -1,0 +1,2 @@
+# _readFile
+A função _readFile realiza a leitura de dados de um arquivo no sistema Linux utilizando a syscall read. A função assume que os parâmetros necessários, como o descritor do arquivo, o buffer para os dados e o número de bytes a serem lidos, estão configurados nos registradores apropriados antes da execução.
