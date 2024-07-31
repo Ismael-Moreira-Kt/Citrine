@@ -97,3 +97,11 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- The O_CREAT flag must be used in conjunction with rdx to define the file permissions if it needs to be created.
+- If the file already exists, the permissions passed in rdx will be ignored, and the file will be opened with the flags set in rsi.
+- The function does not directly handle errors or exceptions; the caller must implement error handling logic as needed.
+- rsi can combine multiple flags using bitwise logical operations, such as O_CREAT | O_WRONLY.
