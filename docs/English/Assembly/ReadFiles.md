@@ -24,3 +24,8 @@ _readFile:
 - **rdi:** File descriptor obtained previously, for example, through the [_openFile](./OpenFiles.md) function.
 - **rsi:** Pointer to the buffer where the read data will be stored. The buffer must be allocated large enough to store the data.
 - **rdx:** Maximum number of bytes to be read from the file.
+
+<br>
+
+#### Return Value:
+- **rax:** If the syscall is successful, rax contains the number of bytes actually read. If the return is zero, this indicates that the end of the file has been reached. In case of an error, rax will contain a negative value corresponding to the error code.
