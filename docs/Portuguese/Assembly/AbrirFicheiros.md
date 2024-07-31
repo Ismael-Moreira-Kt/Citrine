@@ -17,3 +17,13 @@ _openFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Ponteiro para a string com o caminho do arquivo. A string deve ser terminada por NULL.
+- **rsi:** Flags que definem o comportamento da abertura do arquivo. Exemplos comuns incluem:
+    - `O_CREAT (0x40):` Cria o arquivo se ele não existir.
+    - `O_WRONLY (0x01):` Abre o arquivo para escrita.
+    - `O_RDONLY (0x00):` Abre o arquivo para leitura.
+- **rdx:** Permissões de criação do arquivo (por exemplo, 0644), usadas apenas se o arquivo for criado.
