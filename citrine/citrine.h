@@ -32,43 +32,43 @@ typedef struct {
 
 
 
-int open_file_asm(const char *path, int flags, mode_t mode);
-ssize_t read_file_asm(int fd, void *buffer, size_t count);
-ssize_t write_file_asm(int fd, const void *buffer, size_t count);
-int close_file_asm(int fd);
-int set_permissions_asm(const char *path, mode_t mode);
-int unlink_file_asm(const char *path);
-int access_file_asm(const char *path, int mode);
-int fstat_file_asm(int fd, struct stat *statbuf);
-int mkdir_asm(const char *pathname, mode_t mode);
-int rename_file_asm(const char *oldpath, const char *newpath);
-int rmdir_asm(const char *pathname);
-int fsync_file_asm(int fd);
-int chown_file_asm(const char *path, uid_t owner, gid_t group);
-int statfs_asm(const char *path, struct statfs *buf);
-int copy_file_asm(const char *source, const char *destination);
+int _accessFile(const char *path, int mode);
+int _chownFile(const char *path, uid_t owner, gid_t group);
+int _closeFile(int fd);
+int _copyFile(const char *source, const char *destination);
+int _fstatFile(int fd, struct stat *statbuf);
+int _fsyncFile(int fd);
+int _mkdir(const char *pathname, mode_t mode);
+int _openFile(const char *path, int flags, mode_t mode);
+int _renameFile(const char *oldpath, const char *newpath);
+int _rmdir(const char *pathname);
+int _setPermissions(const char *path, mode_t mode);
+int _statfs(const char *path, struct statfs *buf);
+int _unlinkFile(const char *path);
+ssize_t _readFile(int fd, void *buffer, size_t count);
+ssize_t _writeFile(int fd, const void *buffer, size_t count);
 
 
 
-CitrineFile open_or_create_file(const char *path, int flags, mode_t mode);
-ssize_t read_from_file(CitrineFile *file, void *buffer, size_t count);
-ssize_t write_to_file(CitrineFile *file, const void *buffer, size_t count);
-int close_file(CitrineFile *file);
-int set_file_permissions(const char *path, mode_t mode);
-int file_exists(const char *path);
-ssize_t get_file_size(CitrineFile *file);
-int create_directory(const char *path, mode_t mode);
-int remove_file(const char *path);
-int rename_file(const char *oldpath, const char *newpath);
-int remove_directory(const char *path);
-int sync_file(CitrineFile *file);
-int create_nested_directory(const char *path, mode_t mode);
-ssize_t read_file_to_buffer(const char *path, char **buffer);
-int check_permissions(const char *path, mode_t mode);
-char **list_files_in_directory(const char *path, size_t *file_count);
-int change_file_owner(const char *path, uid_t owner, gid_t group);
-int get_filesystem_stats(const char *path, struct statfs *buf);
-int copy_file(const char *source_path, const char *destination_path);
+char **listFiles(const char *path, size_t *file_count);
+CitrineFile openFile(const char *path, int flags, mode_t mode);
+int changeOwner(const char *path, uid_t owner, gid_t group);
+int checkPermissions(const char *path, mode_t mode);
+int closeFile(CitrineFile *file);
+int copyFile(const char *source_path, const char *destination_path);
+int createDirectory(const char *path, mode_t mode);
+int createNestedDirectory(const char *path, mode_t mode);
+int fileExists(const char *path);
+int getFileStats(const char *path, struct statfs *buf);
+int removeDirectory(const char *path);
+int removeFile(const char *path);
+int renameFile(const char *oldpath, const char *newpath);
+int setPermissions(const char *path, mode_t mode);
+int syncFile(CitrineFile *file);
+ssize_t getFileSize(CitrineFile *file);
+ssize_t readFile(CitrineFile *file, void *buffer, size_t count);
+ssize_t readToBuffer(const char *path, char **buffer);
+ssize_t writeFile(CitrineFile *file, const void *buffer, size_t count);
 
 
 
