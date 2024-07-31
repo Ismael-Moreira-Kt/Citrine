@@ -96,3 +96,10 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Notas Adicionais:
+- A flag O_CREAT deve ser combinada com rsi para definir o comportamento de criação e as permissões do arquivo.
+- Se o arquivo já existir, as permissões fornecidas em rdx serão ignoradas.
+- É responsabilidade do chamador configurar os registradores corretamente e tratar qualquer erro retornado.
