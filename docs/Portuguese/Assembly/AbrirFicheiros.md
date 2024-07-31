@@ -1,2 +1,19 @@
 # _openFile
 A função _openFile realiza a abertura de um arquivo no sistema Linux utilizando a syscall open. Se o arquivo especificado existir, a função o abre de acordo com as flags fornecidas. Se o arquivo não existir, a função o cria com as permissões especificadas.
+
+<br><br>
+
+## Detalhes da Implementação:
+- **Syscall Número:** 2
+- **Registradores Utilizados:**
+    - `rax:` Armazena o número da syscall.
+    - `rdi:` Endereço da string que representa o caminho do arquivo.
+    - `rsi:` Flags que especificam o modo de abertura.
+    - `rdx:` Permissões para o arquivo em caso de criação.
+
+```asm
+_openFile:
+    mov rax, 2
+    syscall
+    ret
+```
