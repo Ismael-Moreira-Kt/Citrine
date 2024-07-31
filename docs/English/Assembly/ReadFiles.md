@@ -97,3 +97,10 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- Make sure the buffer (rsi) is allocated and has enough space to store the data to be read.
+- The number of bytes read is returned in rax and may be zero if the end of the file is reached.
+- The code above assumes that the conversion to ASCII and the display of the number of bytes read are simplified. In a real implementation, you may need to convert the number of bytes read into an ASCII representation for display.
