@@ -17,3 +17,10 @@ _readFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Descritor do arquivo (file descriptor) obtido anteriormente, por exemplo, através da função _openFile.
+- **rsi:** Ponteiro para o buffer onde os dados lidos serão armazenados. O buffer deve ser alocado com tamanho suficiente para armazenar os dados.
+- **rdx:** Número máximo de bytes a serem lidos do arquivo.
