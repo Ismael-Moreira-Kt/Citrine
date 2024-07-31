@@ -3,110 +3,110 @@ section .note.GNU-stack noalloc noexec nowrite progbits
 
 
 section .text
-    global open_file_asm
-    global read_file_asm
-    global write_file_asm
-    global close_file_asm
-    global set_permissions_asm
-    global unlink_file_asm
-    global access_file_asm
-    global fstat_file_asm
-    global mkdir_asm
-    global rename_file_asm
-    global rmdir_asm
-    global fsync_file_asm
-    global copy_file_asm
-    global chown_file_asm
-    global statfs_asm
+    global _openFile
+    global _readFile
+    global _writeFile
+    global _closeFile
+    global _setPermissions
+    global _unlinkFile
+    global _accessFile
+    global _fstatFile
+    global _mkdir
+    global _renameFile
+    global _rmdir
+    global _fsyncFile
+    global _copyFile
+    global _chownFile
+    global _statfs
 
 
-open_file_asm:
+_openFile:
     mov rax, 2
     syscall
     ret
 
 
-read_file_asm:
+_readFile:
     mov rax, 0
     syscall
     ret
 
 
-write_file_asm:
+_writeFile:
     mov rax, 1
     syscall
     ret
 
 
-close_file_asm:
+_closeFile:
     mov rax, 3
     syscall
     ret
 
 
-set_permissions_asm:
+_setPermissions:
     mov rax, 90
     syscall
     ret
 
 
-unlink_file_asm:
+_unlinkFile:
     mov rax, 87
     syscall
     ret
 
 
-access_file_asm:
+_accessFile:
     mov rax, 21
     syscall
     ret
 
 
-fstat_file_asm:
+_fstatFile:
     mov rax, 5
     syscall
     ret
 
 
-mkdir_asm:
+_mkdir:
     mov rax, 83
     syscall
     ret
 
 
-rename_file_asm:
+_renameFile:
     mov rax, 82
     syscall
     ret
 
 
-rmdir_asm:
+_rmdir:
     mov rax, 80
     mov rdi, rdi
     syscall
     ret
 
 
-fsync_file_asm:
+_fsyncFile:
     mov rax, 95
     mov rdi, rdi
     syscall
     ret
 
 
-copy_file_asm:
+_copyFile:
     mov rax, 40
     syscall
     ret
 
 
-chown_file_asm:
+_chownFile:
     mov rax, 92
     syscall
     ret
 
 
-statfs_asm:
+_statfs:
     mov rax, 137
     syscall
     ret
