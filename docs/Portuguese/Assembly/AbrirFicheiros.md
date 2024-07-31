@@ -32,3 +32,37 @@ _openFile:
 
 #### Valor de Retorno:
 - **rax:** Se a syscall for bem-sucedida, rax conterá o descritor de arquivo (file descriptor). Em caso de falha, rax conterá um valor negativo correspondente ao código de erro (ex.: -ENOENT se o caminho do arquivo não for encontrado).
+
+<br><br>
+
+## Exemplo de Uso:
+
+#### Criar um Novo Arquivo:
+O exemplo a seguir cria um novo arquivo chamado example.txt com permissões 0644 se o arquivo não existir.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+
+
+
+section .text
+    global _start
+    extern _openFile
+
+
+_start:
+    mov rdi, file_path
+    mov rsi, 0x41
+    mov rdx, 0644
+    call _openFile
+    
+    test rax, rax
+    js error
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
