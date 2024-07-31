@@ -10,3 +10,17 @@ The _writeFile function writes data to a file on the Linux system using the writ
     - `rdi:` Descriptor of the file to which the data will be written.
     - `rsi:` Address of the buffer containing the data to be written.
     - `rdx:` Number of bytes to be written.
+
+```asm
+_writeFile:
+    mov rax, 1
+    syscall
+    ret
+```
+
+<br>
+
+#### Expected Parameters:
+- **rdi:** File descriptor obtained previously, for example, through the _openFile function.
+- **rsi:** Pointer to the buffer containing the data to be written to the file.
+- **rdx:** Number of bytes to be written to the file.
