@@ -7,24 +7,24 @@
 
 
 
-void openOrCreateFile();
-void readFromFile();
-void writeToFile();
-void getFileSize();
-void createDirectory();
-void removeFile();
-void renameFile();
-void removeDirectory();
-void syncFile();
-void createNestedDirectory();
-void readFileToBuffer();
-void checkPermissions();
-void listFilesInDirectory();
-void changeFileOwner();
-void copyFile();
-void getFileSystemStats();
-void setFilePermissions();
-void fileExists();
+void _openOrCreateFile();
+void _readFromFile();
+void _writeToFile();
+void _getFileSize();
+void _createDirectory();
+void _removeFile();
+void _renameFile();
+void _removeDirectory();
+void _syncFile();
+void _createNestedDirectory();
+void _readFileToBuffer();
+void _checkPermissions();
+void _listFilesInDirectory();
+void _changeFileOwner();
+void _copyFile();
+void _getFileSystemStats();
+void _setFilePermissions();
+void _fileExists();
 
 
 
