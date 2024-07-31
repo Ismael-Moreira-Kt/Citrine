@@ -18,6 +18,8 @@ _openFile:
     ret
 ```
 
+<br>
+
 #### Expected Parameters:
 - **rdi:** Pointer to the string with the file path. The string must be NULL terminated.
 - **rsi:** Flags that define the file opening behavior. Common examples include:
@@ -25,3 +27,8 @@ _openFile:
     - `O_WRONLY (0x01):` Opens the file for writing.
     - `O_RDONLY (0x00):` Opens the file for reading.
 - **rdx:** File creation permissions (e.g. 0644), only used if the file is created.
+
+<br>
+
+#### Return Value:
+- **rax:** If the syscall is successful, rax will contain the file descriptor. In case of failure, rax will contain a negative value corresponding to the error code (e.g. -ENOENT if the file path is not found).
