@@ -27,3 +27,8 @@ _openFile:
     - `O_WRONLY (0x01):` Abre o arquivo para escrita.
     - `O_RDONLY (0x00):` Abre o arquivo para leitura.
 - **rdx:** Permissões de criação do arquivo (por exemplo, 0644), usadas apenas se o arquivo for criado.
+
+<br>
+
+#### Valor de Retorno:
+- **rax:** Se a syscall for bem-sucedida, rax conterá o descritor de arquivo (file descriptor). Em caso de falha, rax conterá um valor negativo correspondente ao código de erro (ex.: -ENOENT se o caminho do arquivo não for encontrado).
