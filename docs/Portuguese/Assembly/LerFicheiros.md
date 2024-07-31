@@ -97,3 +97,10 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Notas Adicionais:
+- Certifique-se de que o buffer (rsi) seja alocado e tenha espaço suficiente para armazenar os dados a serem lidos.
+- O número de bytes lidos é retornado em rax, e o valor pode ser zero se o final do arquivo for alcançado.
+- A função _readFile assume que o descritor do arquivo foi obtido e que o buffer foi alocado corretamente antes da chamada.
