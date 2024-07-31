@@ -2,7 +2,7 @@
 
 
 
-void _setFilePermissions() {
+void __setFilePermissions() {
     int result = setPermissions("example.txt", PERM_RWX);
     
     if (result == 0) {

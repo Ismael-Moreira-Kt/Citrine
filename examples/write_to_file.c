@@ -2,7 +2,7 @@
 
 
 
-void writeToFile() {
+void __writeToFile() {
     CitrineFile file = openFile("example.txt", O_WRONLY | O_CREAT | O_TRUNC, PERM_RW_OWNER);
     
     if (file.fd != -1) {
@@ -13,6 +13,6 @@ void writeToFile() {
             printf("Written %zd bytes.\n", bytesWritten);
         }
         
-        close_file(&file);
+        closeFile(&file);
     }
 }

@@ -2,7 +2,7 @@
 
 
 
-void _fileExists() {
+void __fileExists() {
     if (fileExists("example.txt")) {
         printf("File exists.\n");
     } else {

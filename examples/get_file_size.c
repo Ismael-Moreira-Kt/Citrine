@@ -2,7 +2,7 @@
 
 
 
-void _getFileSize() {
+void __getFileSize() {
     const char *filePath = "example.txt";
     CitrineFile file = openFile(filePath, O_RDWR | O_CREAT, PERM_RW_OWNER);
     
@@ -14,7 +14,7 @@ void _getFileSize() {
         printf("File size: %zd bytes\n", size);
     }
 
-    if (close_file(&file) != 0) {
+    if (closeFile(&file) != 0) {
         printf("Error: Could not close the file.\n");
     }
 }

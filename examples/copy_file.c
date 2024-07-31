@@ -2,7 +2,7 @@
 
 
 
-void _copyFile() {
+void __copyFile() {
     const char *source_path = "example.txt";
     const char *destination_path = "copy_of_example.txt";
 

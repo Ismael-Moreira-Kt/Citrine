@@ -2,7 +2,7 @@
 
 
 
-void _createDirectory() {
+void __createDirectory() {
     int result = createDirectory("example_dir", PERM_RW_OWNER);
     
     if (result == 0) {

@@ -2,7 +2,7 @@
 
 
 
-void _syncFile() {
+void __syncFile() {
     CitrineFile file = openFile("example.txt", O_WRONLY, 0);
     
     if (file.fd != -1) {
@@ -14,7 +14,7 @@ void _syncFile() {
             perror("sync_file failed");
         }
     
-        if (close_file(&file) != 0) {
+        if (closeFile(&file) != 0) {
             perror("close_file failed");
         }
     } else {

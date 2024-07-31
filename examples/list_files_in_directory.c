@@ -2,7 +2,7 @@
 
 
 
-void _listFilesInDirectory() {
+void __listFilesInDirectory() {
     size_t file_count;
     char **files = listFiles(".", &file_count);
     

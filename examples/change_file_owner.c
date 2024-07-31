@@ -2,7 +2,7 @@
 
 
 
-void _changeFileOwner() {
+void __changeFileOwner() {
     int result = changeOwner("example.txt", getuid(), getgid());
 
     if (result == 0) {

@@ -2,7 +2,7 @@
 
 
 
-void _readFromFile() {
+void __readFromFile() {
     CitrineFile file = openFile("example.txt", O_RDONLY, 0);
     
     if (file.fd != -1) {
@@ -14,6 +14,6 @@ void _readFromFile() {
             printf("Read %zd bytes: %s\n", bytesRead, buffer);
         }
     
-        close_file(&file);
+        closeFile(&file);
     }
 }

@@ -2,7 +2,7 @@
 
 
 
-void _readFileToBuffer() {
+void __readFileToBuffer() {
     char *buffer;
     ssize_t size = readToBuffer("example.txt", &buffer);
     

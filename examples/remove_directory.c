@@ -2,7 +2,7 @@
 
 
 
-void _removeDirectory() {
+void __removeDirectory() {
     int result = removeDirectory("example_dir");
     
     if (result == 0) {

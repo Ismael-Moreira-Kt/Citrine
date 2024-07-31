@@ -2,7 +2,7 @@
 
 
 
-void _getFileSystemStats() {
+void __getFileSystemStats() {
     struct statfs fs_stats;
     int result = getFileStats("/", &fs_stats);
     

@@ -34,56 +34,56 @@ void print_section(const char *title) {
 
 int main() {
     print_section("Open or Create File");
-    _openOrCreateFile();
+    __openOrCreateFile();
     
     print_section("Write To File");
-    _writeToFile();
+    __writeToFile();
     
     print_section("Read From File");
-    _readFromFile();
+    __readFromFile();
 
     print_section("Read File To Buffer");
-    _readFileToBuffer();
+    __readFileToBuffer();
 
     print_section("Get File Size");
-    _getFileSize();
+    __getFileSize();
 
     print_section("File Exists");
-    _fileExists();
+    __fileExists();
 
     print_section("Sync File");
-    _syncFile();
+    __syncFile();
 
     print_section("Set Permissions");
-    _setFilePermissions();
+    __setFilePermissions();
 
     print_section("Check Permissions");
-    _checkPermissions();
+    __checkPermissions();
 
     print_section("Change File Owner");
-    _changeFileOwner();
+    __changeFileOwner();
 
     print_section("Copy File");
-    _copyFile();
+    __copyFile();
 
     print_section("Rename File");
-    _renameFile();
+    __renameFile();
 
     print_section("Remove File");
-    _removeFile();
+    __removeFile();
 
     print_section("Create Directory");
-    _createDirectory();
+    __createDirectory();
 
     print_section("List Files In Directory");
-    _listFilesInDirectory();
+    __listFilesInDirectory();
 
     print_section("Get File System Stats");
-    _getFileSystemStats();
+    __getFileSystemStats();
 
     print_section("Create Nested Directory");
-    _createNestedDirectory();
+    __createNestedDirectory();
 
     print_section("Remove Directory");
-    _removeDirectory();
+    __removeDirectory();
 }
