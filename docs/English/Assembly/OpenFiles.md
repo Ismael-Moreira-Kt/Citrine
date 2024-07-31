@@ -1,0 +1,2 @@
+# _openFile
+The _openFile function opens a file in the Linux system using the open syscall. If the specified file exists, the function opens it according to the provided flags. If the file does not exist, the function creates it with the specified permissions.
