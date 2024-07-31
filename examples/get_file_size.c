@@ -2,11 +2,11 @@
 
 
 
-void getFileSize() {
+void _getFileSize() {
     const char *filePath = "example.txt";
-    CitrineFile file = open_or_create_file(filePath, O_RDWR | O_CREAT, PERM_RW_OWNER);
+    CitrineFile file = openFile(filePath, O_RDWR | O_CREAT, PERM_RW_OWNER);
     
-    ssize_t size = get_file_size(&file);
+    ssize_t size = getFileSize(&file);
 
     if (size == -1) {
         printf("Error: Could not get file size. Check file permissions or if the file is accessible.\n");
