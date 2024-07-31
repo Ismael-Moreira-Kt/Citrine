@@ -2,10 +2,10 @@
 
 
 
-CitrineFile open_or_create_file(const char *path, int flags, mode_t mode) {
+CitrineFile openFile(const char *path, int flags, mode_t mode) {
     CitrineFile file;
     
-    file.fd = open_file_asm(path, flags, mode);
+    file.fd = _openFile(path, flags, mode);
     file.path = path;
 
     if (file.fd == -1) {
@@ -17,8 +17,8 @@ CitrineFile open_or_create_file(const char *path, int flags, mode_t mode) {
 
 
 
-ssize_t read_from_file(CitrineFile *file, void *buffer, size_t count) {
-    ssize_t bytesRead = read_file_asm(file->fd, buffer, count);
+ssize_t readFile(CitrineFile *file, void *buffer, size_t count) {
+    ssize_t bytesRead = _readFile(file->fd, buffer, count);
 
     if (bytesRead == -1) {
         perror("Error reading file");
@@ -29,8 +29,8 @@ ssize_t read_from_file(CitrineFile *file, void *buffer, size_t count) {
 
 
 
-ssize_t write_to_file(CitrineFile *file, const void *buffer, size_t count) {
-    ssize_t bytesWritten = write_file_asm(file->fd, buffer, count);
+ssize_t writeFile(CitrineFile *file, const void *buffer, size_t count) {
+    ssize_t bytesWritten = _writeFile(file->fd, buffer, count);
 
     if (bytesWritten == -1) {
         perror("Error writing file");
@@ -41,8 +41,8 @@ ssize_t write_to_file(CitrineFile *file, const void *buffer, size_t count) {
 
 
 
-int close_file(CitrineFile *file) {
-    int result = close_file_asm(file->fd);
+int closeFile(CitrineFile *file) {
+    int result = _closeFile(file->fd);
 
     if (result == -1) {
         perror("Error closing file");
@@ -53,8 +53,8 @@ int close_file(CitrineFile *file) {
 
 
 
-int set_file_permissions(const char *path, mode_t mode) {
-    int result = set_permissions_asm(path, mode);
+int setPermissions(const char *path, mode_t mode) {
+    int result = _setPermissions(path, mode);
 
     if (result == -1) {
         perror("Error setting permissions");
@@ -65,16 +65,16 @@ int set_file_permissions(const char *path, mode_t mode) {
 
 
 
-int file_exists(const char *path) {
-    return (access_file_asm(path, F_OK) != -1);
+int fileExists(const char *path) {
+    return (_accessFile(path, F_OK) != -1);
 }
 
 
 
-ssize_t get_file_size(CitrineFile *file) {
+ssize_t getFileSize(CitrineFile *file) {
     struct stat st;
 
-    if (fstat_file_asm(file->fd, &st) == 0)
+    if (_fstatFile(file->fd, &st) == 0)
         return st.st_size;
 
     perror("Error getting file size");
@@ -84,8 +84,8 @@ ssize_t get_file_size(CitrineFile *file) {
 
 
 
-int create_directory(const char *path, mode_t mode) {
-    int result = mkdir_asm(path, mode);
+int createDirectory(const char *path, mode_t mode) {
+    int result = _mkdir(path, mode);
 
     if (result == -1) {
         perror("Error creating directory");
@@ -96,8 +96,8 @@ int create_directory(const char *path, mode_t mode) {
 
 
 
-int remove_file(const char *path) {
-    int result = unlink_file_asm(path);
+int removeFile(const char *path) {
+    int result = _unlinkFile(path);
 
     if (result == -1) {
         perror("Error removing file");
@@ -108,8 +108,8 @@ int remove_file(const char *path) {
 
 
 
-int rename_file(const char *oldpath, const char *newpath) {
-    int result = rename_file_asm(oldpath, newpath);
+int renameFile(const char *oldpath, const char *newpath) {
+    int result = _renameFile(oldpath, newpath);
 
     if (result == -1) {
         perror("Error renaming file");
@@ -120,8 +120,8 @@ int rename_file(const char *oldpath, const char *newpath) {
 
 
 
-int sync_file(CitrineFile *file) {
-    int result = fsync_file_asm(file->fd);
+int syncFile(CitrineFile *file) {
+    int result = _fsyncFile(file->fd);
 
     if (result == -1) {
         perror("Error syncing file");
@@ -133,8 +133,8 @@ int sync_file(CitrineFile *file) {
 
 
 
-int remove_directory(const char *path) {
-    int result = rmdir_asm(path);
+int removeDirectory(const char *path) {
+    int result = _rmdir(path);
 
     if (result == -1) {
         perror("Error removing directory");
@@ -146,7 +146,7 @@ int remove_directory(const char *path) {
 
 
 
-int create_nested_directory(const char *path, mode_t mode) {
+int createNestedDirectory(const char *path, mode_t mode) {
     char *temp_path = strdup(path);
     if (temp_path == NULL) {
         perror("Error duplicating path");
@@ -161,7 +161,7 @@ int create_nested_directory(const char *path, mode_t mode) {
     while (dir != NULL) {
         strcat(current_path, dir);
 
-        result = mkdir_asm(current_path, mode);
+        result = _mkdir(current_path, mode);
 
         if (result == -1 && errno != EEXIST) {
             perror("Error creating directory");
@@ -181,15 +181,15 @@ int create_nested_directory(const char *path, mode_t mode) {
 
 
 
-ssize_t read_file_to_buffer(const char *path, char **buffer) {
-    CitrineFile file = open_or_create_file(path, O_RDONLY, 0);
+ssize_t readToBuffer(const char *path, char **buffer) {
+    CitrineFile file = openFile(path, O_RDONLY, 0);
 
     if (file.fd == -1) return -1;
 
-    ssize_t size = get_file_size(&file);
+    ssize_t size = getFileSize(&file);
 
     if (size == -1) {
-        close_file(&file);
+        closeFile(&file);
 
         return -1;
     }
@@ -198,24 +198,24 @@ ssize_t read_file_to_buffer(const char *path, char **buffer) {
 
     if (*buffer == NULL) {
         perror("Error allocating buffer");
-        close_file(&file);
+        closeFile(&file);
 
         return -1;
     }
 
-    ssize_t bytesRead = read_from_file(&file, *buffer, size);
-    close_file(&file);
+    ssize_t bytesRead = readFile(&file, *buffer, size);
+    closeFile(&file);
 
     return (bytesRead == size) ? size : -1;
 }
 
 
 
-int check_permissions(const char *path, mode_t mode) {
+int checkPermissions(const char *path, mode_t mode) {
     struct stat st;
 
-    if (access_file_asm(path, F_OK) != -1) {
-        if (fstat_file_asm(open_file_asm(path, O_RDONLY, 0), &st) == 0) {
+    if (_accessFile(path, F_OK) != -1) {
+        if (_fstatFile(_openFile(path, O_RDONLY, 0), &st) == 0) {
             if ((st.st_mode & mode) == mode) {
                 return 1;
             }
@@ -227,7 +227,7 @@ int check_permissions(const char *path, mode_t mode) {
 
 
 
-char **list_files_in_directory(const char *path, size_t *file_count) {
+char **listFiles(const char *path, size_t *file_count) {
     DIR *dir;
     struct dirent *entry;
     char **file_list = NULL;
@@ -259,8 +259,8 @@ char **list_files_in_directory(const char *path, size_t *file_count) {
 
 
 
-int change_file_owner(const char *path, uid_t owner, gid_t group) {
-    int result = chown_file_asm(path, owner, group);
+int changeOwner(const char *path, uid_t owner, gid_t group) {
+    int result = _chownFile(path, owner, group);
 
     if (result == -1) {
         perror("Error changing file owner");
@@ -271,23 +271,23 @@ int change_file_owner(const char *path, uid_t owner, gid_t group) {
 
 
 
-int copy_file(const char *source_path, const char *destination_path) {
-    CitrineFile src_file = open_or_create_file(source_path, O_RDONLY, 0);
+int copyFile(const char *source_path, const char *destination_path) {
+    CitrineFile src_file = openFile(source_path, O_RDONLY, 0);
     if (src_file.fd == -1) return -1;
 
-    CitrineFile dest_file = open_or_create_file(destination_path, O_WRONLY | O_CREAT | O_TRUNC, PERM_RW_OWNER);
+    CitrineFile dest_file = openFile(destination_path, O_WRONLY | O_CREAT | O_TRUNC, PERM_RW_OWNER);
     if (dest_file.fd == -1) {
-        close_file(&src_file);
+        closeFile(&src_file);
         return -1;
     }
 
     char buffer[4096];
     ssize_t bytes_read;
-    while ((bytes_read = read_from_file(&src_file, buffer, sizeof(buffer))) > 0) {
-        if (write_to_file(&dest_file, buffer, bytes_read) != bytes_read) {
+    while ((bytes_read = readFile(&src_file, buffer, sizeof(buffer))) > 0) {
+        if (writeFile(&dest_file, buffer, bytes_read) != bytes_read) {
             perror("Error writing to destination file");
-            close_file(&src_file);
-            close_file(&dest_file);
+            closeFile(&src_file);
+            closeFile(&dest_file);
             return -1;
         }
     }
@@ -296,15 +296,15 @@ int copy_file(const char *source_path, const char *destination_path) {
         perror("Error reading from source file");
     }
 
-    close_file(&src_file);
-    close_file(&dest_file);
+    closeFile(&src_file);
+    closeFile(&dest_file);
     return (bytes_read == -1) ? -1 : 0;
 }
 
 
 
-int get_filesystem_stats(const char *path, struct statfs *buf) {
-    int result = statfs_asm(path, buf);
+int getFileStats(const char *path, struct statfs *buf) {
+    int result = _statfs(path, buf);
 
     if (result == -1) {
         perror("Error getting filesystem statistics");
