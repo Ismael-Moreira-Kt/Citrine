@@ -2,8 +2,8 @@
 
 
 
-void setFilePermissions() {
-    int result = set_file_permissions("example.txt", PERM_RWX);
+void _setFilePermissions() {
+    int result = setPermissions("example.txt", PERM_RWX);
     
     if (result == 0) {
         printf("Permissions set successfully.\n");
