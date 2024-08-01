@@ -103,3 +103,9 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- The _accessFile function is useful for checking the existence and permissions of files before trying to open or manipulate them. However, due to possible race conditions, access checking does not guarantee that the subsequent operation (such as opening the file) will be successful.
+- The use of appropriate flags is essential to verify the correct type of access.
