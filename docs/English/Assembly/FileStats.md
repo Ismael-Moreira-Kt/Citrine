@@ -16,3 +16,9 @@ _fstatFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Expected Parameters:
+- **rdi:** File descriptor of the file you want to obtain information about.
+- **rsi:** Pointer to the stat structure where the file information will be stored.
