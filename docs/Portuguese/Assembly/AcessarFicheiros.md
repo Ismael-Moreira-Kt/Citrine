@@ -26,3 +26,8 @@ _accessFile:
     - **1:** Verifica se o arquivo é executável.
     - **2:** Verifica se o arquivo é gravável.
     - **4:** Verifica se o arquivo é legível.
+
+<br>
+
+#### Valor de Retorno:
+- **rax:** Se a syscall for bem-sucedida (ou seja, se o acesso for permitido), rax conterá 0. Em caso de erro (por exemplo, se o acesso for negado ou o arquivo não existir), rax conterá um valor negativo correspondente ao código de erro.
