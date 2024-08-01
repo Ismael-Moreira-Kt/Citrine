@@ -16,3 +16,13 @@ _accessFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Expected Parameters:
+- rdi: Pointer to the string containing the path of the file to be checked.
+- rsi: Accessibility check flags. Common values ​​include:
+    - **0:** Checks the existence of the file.
+    - **1:** Checks if the file is executable.
+    - **2:** Checks if the file is writable.
+    - **4:** Checks if the file is readable.
