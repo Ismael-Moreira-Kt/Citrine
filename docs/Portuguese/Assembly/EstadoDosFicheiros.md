@@ -1,0 +1,2 @@
+# _fstatFile
+A função _fstatFile obtém informações sobre um arquivo aberto, como tamanho, permissões, e timestamps, utilizando a syscall fstat no Linux. Essa função é particularmente útil quando você já tem um descritor de arquivo (file descriptor) e precisa obter informações detalhadas sobre o arquivo correspondente.
