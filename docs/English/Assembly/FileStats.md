@@ -27,3 +27,21 @@ _fstatFile:
 
 #### Return Value:
 - **rax:** If the syscall is successful, rax will contain 0. In case of error, rax will contain a negative value corresponding to the error code.
+
+<br>
+
+#### Stat structure:
+The stat structure is a standard structure in Linux that stores various information about the file. Some of the most common fields include:
+- `st_dev:` ID of the device containing the file.
+- `st_ino:` Inode number.
+- `st_mode:` File type and permissions.
+- `st_nlink:` Number of hard links.
+- `st_uid:` Owner ID.
+- `st_gid:` Group ID.
+- `st_rdev:` Device ID (if it is a special device).
+- `st_size:` Total file size in bytes.
+- `st_blksize:` Preferred block size for file system I/O.
+- `st_blocks:` Number of blocks allocated.
+- `st_atime:` Last access time.
+- `st_mtime:` Last modification time.
+- `st_ctime:` Time of last status change.
