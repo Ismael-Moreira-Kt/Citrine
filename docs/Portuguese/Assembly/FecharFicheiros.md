@@ -15,3 +15,8 @@ _closeFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Descritor do arquivo (file descriptor) obtido anteriormente, por exemplo, através da função _openFile.
