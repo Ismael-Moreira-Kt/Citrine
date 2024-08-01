@@ -25,3 +25,53 @@ _closeFile:
 
 #### Valor de Retorno:
 - **rax:** Se a syscall for bem-sucedida, rax conterá 0. Em caso de erro, rax conterá um valor negativo correspondente ao código de erro.
+
+<br><br>
+
+## Exemplos de Uso:
+Este exemplo demonstra como usar _openFile para abrir um arquivo, _writeFile para escrever dados no arquivo e _closeFile para fechar o arquivo após a escrita.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+    data_to_write db 'Hello, World!', 0
+    data_len equ $-data_to_write
+
+
+
+section .text
+    global _start
+    extern _openFile
+    extern _writeFile
+    extern _closeFile
+
+
+_start:
+    ; Abrir o arquivo 
+    mov rdi, file_path
+    mov rsi, 0x41
+    mov rdx, 0644
+    call _openFile
+    
+    mov rdi, rax
+    mov rsi, data_to_write
+    mov rdx, data_len
+    call _writeFile
+    
+    test rax, rax
+    js error
+
+    call _closeFile
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    call _closeFile
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
