@@ -20,9 +20,14 @@ _accessFile:
 <br>
 
 #### Expected Parameters:
-- rdi: Pointer to the string containing the path of the file to be checked.
-- rsi: Accessibility check flags. Common values ​​include:
+- **rdi:** Pointer to the string containing the path of the file to be checked.
+- **rsi:** Accessibility check flags. Common values ​​include:
     - **0:** Checks the existence of the file.
     - **1:** Checks if the file is executable.
     - **2:** Checks if the file is writable.
     - **4:** Checks if the file is readable.
+
+<br>
+
+#### Return Value:
+- **rax:** If the syscall is successful (i.e. if access is allowed), rax will contain 0. In case of error (e.g. if access is denied or the file does not exist), rax will contain a corresponding negative value to the error code.
