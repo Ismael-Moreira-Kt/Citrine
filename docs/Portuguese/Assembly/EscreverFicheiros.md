@@ -17,3 +17,10 @@ _writeFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Descritor do arquivo (file descriptor) obtido anteriormente, por exemplo, através da função _openFile.
+- **rsi:** Ponteiro para o buffer contendo os dados a serem escritos no arquivo.
+- **rdx:** Número de bytes a serem escritos no arquivo.
