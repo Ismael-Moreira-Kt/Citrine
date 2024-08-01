@@ -1,0 +1,2 @@
+# _setPermissions
+The _setPermissions function changes the permissions of a file on the Linux system using the chmod syscall. The function assumes that necessary parameters, such as file path and permissions, are set in the appropriate registers before execution.
