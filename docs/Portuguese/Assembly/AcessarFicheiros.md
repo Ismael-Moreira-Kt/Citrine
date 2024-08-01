@@ -32,6 +32,8 @@ _accessFile:
 #### Valor de Retorno:
 - **rax:** Se a syscall for bem-sucedida (ou seja, se o acesso for permitido), rax conterá 0. Em caso de erro (por exemplo, se o acesso for negado ou o arquivo não existir), rax conterá um valor negativo correspondente ao código de erro.
 
+<br><br>
+
 ## Exemplos de Uso:
 
 #### Verificar a Existência de um Arquivo
@@ -51,6 +53,41 @@ section .text
 _start:
     mov rdi, file_path
     mov rsi, 0
+    call _accessFile
+    
+    test rax, rax
+    js error
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
+
+<br>
+
+#### Verificar se o Arquivo é Legível
+Este exemplo demonstra como usar _accessFile para verificar se um arquivo é legível.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+
+
+
+section .text
+    global _start
+    extern _accessFile
+
+
+_start:
+    mov rdi, file_path
+    mov rsi, 4
     call _accessFile
     
     test rax, rax
