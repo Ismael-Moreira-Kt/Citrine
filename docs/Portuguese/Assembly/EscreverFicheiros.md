@@ -24,3 +24,8 @@ _writeFile:
 - **rdi:** Descritor do arquivo (file descriptor) obtido anteriormente, por exemplo, através da função _openFile.
 - **rsi:** Ponteiro para o buffer contendo os dados a serem escritos no arquivo.
 - **rdx:** Número de bytes a serem escritos no arquivo.
+
+<br>
+
+#### Valor de Retorno:
+- **rax:** Se a syscall for bem-sucedida, rax conterá o número de bytes efetivamente escritos. Em caso de erro, rax conterá um valor negativo correspondente ao código de erro.
