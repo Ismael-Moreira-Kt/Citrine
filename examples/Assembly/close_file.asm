@@ -13,7 +13,6 @@ section .text
 
 
 _start:
-    ; Abrir o arquivo 
     mov rdi, file_path
     mov rsi, 0x41
     mov rdx, 0644

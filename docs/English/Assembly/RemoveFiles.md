@@ -1,0 +1,2 @@
+# _unlinkFile
+The _unlinkFile function removes a file from the file system in Linux using the unlink syscall. When called, the function unlinks the specified file name from its inode, effectively deleting the file from the system if this is the last link to the inode.
