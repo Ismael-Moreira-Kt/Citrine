@@ -76,3 +76,10 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- Make sure the buffer (rsi) contains the data to be written and that the number of bytes (rdx) is correct.
+- The number of bytes written is returned in rax, and the value can be zero if there is no data to write or if the file descriptor is not valid.
+- In a real application, you must include additional code to handle errors and ensure that the buffer and data are handled correctly.
