@@ -8,3 +8,15 @@ A função _unlinkFile remove um arquivo do sistema de arquivos no Linux utiliza
 - **Registradores Utilizados:**
     - `rax:` Armazena o número da syscall.
     - `rdi:` Ponteiro para a string contendo o caminho do arquivo a ser removido.
+
+```asm
+_unlinkFile:
+    mov rax, 87
+    syscall
+    ret
+```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Ponteiro para a string contendo o caminho do arquivo que será removido.
