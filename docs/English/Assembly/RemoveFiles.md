@@ -59,3 +59,10 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- The _unlinkFile function removes the link to a file from the file system. If the file is the only link to the inode, disk space is freed.
+- The code above assumes that the file to be removed exists and that you have the necessary permissions to delete it.
+- On critical systems, it is recommended to perform additional checks before removing files, such as backups or user commits.
