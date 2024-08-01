@@ -31,3 +31,40 @@ _accessFile:
 
 #### Return Value:
 - **rax:** If the syscall is successful (i.e. if access is allowed), rax will contain 0. In case of error (e.g. if access is denied or the file does not exist), rax will contain a corresponding negative value to the error code.
+
+<br><br>
+
+## Example of use:
+
+#### Check for the Existence of a File
+This example demonstrates how to use _accessFile to check whether a file exists on the file system.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+
+
+
+section .text
+    global _start
+    extern _accessFile
+
+
+_start:
+    mov rdi, file_path
+    mov rsi, 0
+    call _accessFile
+    
+    test rax, rax
+    js error
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
