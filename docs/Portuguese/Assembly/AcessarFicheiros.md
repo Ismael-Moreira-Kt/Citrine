@@ -1,0 +1,2 @@
+# _accessFile
+A função _accessFile verifica a acessibilidade de um arquivo no sistema de arquivos Linux usando a syscall access. Essa função pode ser utilizada para verificar se um arquivo existe e/ou se o processo tem as permissões necessárias para realizar operações específicas (leitura, escrita, execução) no arquivo.
