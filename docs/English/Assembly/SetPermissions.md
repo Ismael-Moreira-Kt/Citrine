@@ -27,3 +27,38 @@ _setPermissions:
 
 #### Return Value:
 - **rax:** If the syscall is successful, rax will contain 0. In case of error, rax will contain a negative value corresponding to the error code.
+
+<br><br>
+
+## Example of use:
+This example demonstrates how to use _setPermissions to change the permissions of an existing file.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+
+
+
+section .text
+    global _start
+    extern _setPermissions
+
+
+_start:
+    mov rdi, file_path
+    mov rsi, 0755
+    call _setPermissions
+    
+    test rax, rax
+    js error
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
