@@ -1,0 +1,2 @@
+# _writeFile
+A função _writeFile realiza a escrita de dados em um arquivo no sistema Linux utilizando a syscall write. A função assume que os parâmetros necessários, como o descritor do arquivo, o buffer com os dados e o número de bytes a serem escritos, estão configurados nos registradores apropriados antes da execução.
