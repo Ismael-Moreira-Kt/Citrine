@@ -27,3 +27,21 @@ _fstatFile:
 
 #### Valor de Retorno:
 - **rax:** Se a syscall for bem-sucedida, rax conterá 0. Em caso de erro, rax conterá um valor negativo correspondente ao código de erro.
+
+<br>
+
+#### Estrutura stat:
+A estrutura stat é uma estrutura padrão no Linux que armazena várias informações sobre o arquivo. Alguns dos campos mais comuns incluem:
+- `st_dev:` ID do dispositivo contendo o arquivo.
+- `st_ino:` Número do inode.
+- `st_mode:` Tipo de arquivo e permissões.
+- `st_nlink:` Número de hard links.
+- `st_uid:` ID do proprietário.
+- `st_gid:` ID do grupo.
+- `st_rdev:` ID do dispositivo (se for um dispositivo especial).
+- `st_size:` Tamanho total do arquivo em bytes.
+- `st_blksize:` Tamanho de bloco preferido para I/O do sistema de arquivos.
+- `st_blocks:` Número de blocos alocados.
+- `st_atime:` Hora do último acesso.
+- `st_mtime:` Hora da última modificação.
+- `st_ctime:` Hora da última alteração de status.
