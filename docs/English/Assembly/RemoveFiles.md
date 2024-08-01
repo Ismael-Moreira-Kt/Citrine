@@ -20,3 +20,8 @@ _unlinkFile:
 
 #### Expected Parameters:
 - **rdi:** Pointer to the string containing the path of the file that will be removed.
+
+<br>
+
+#### Return Value:
+- **rax:** If the syscall is successful, rax will contain 0. In case of error, rax will contain a negative value corresponding to the error code.
