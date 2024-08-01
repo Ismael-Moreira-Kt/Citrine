@@ -22,3 +22,8 @@ _fstatFile:
 #### Expected Parameters:
 - **rdi:** File descriptor of the file you want to obtain information about.
 - **rsi:** Pointer to the stat structure where the file information will be stored.
+
+<br>
+
+#### Return Value:
+- **rax:** If the syscall is successful, rax will contain 0. In case of error, rax will contain a negative value corresponding to the error code.
