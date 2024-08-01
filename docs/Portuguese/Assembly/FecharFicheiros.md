@@ -20,3 +20,8 @@ _closeFile:
 
 #### Parâmetros Esperados:
 - **rdi:** Descritor do arquivo (file descriptor) obtido anteriormente, por exemplo, através da função _openFile.
+
+<br>
+
+#### Valor de Retorno:
+- **rax:** Se a syscall for bem-sucedida, rax conterá 0. Em caso de erro, rax conterá um valor negativo correspondente ao código de erro.
