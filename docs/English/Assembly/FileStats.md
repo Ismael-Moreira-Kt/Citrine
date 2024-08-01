@@ -45,3 +45,52 @@ The stat structure is a standard structure in Linux that stores various informat
 - `st_atime:` Last access time.
 - `st_mtime:` Last modification time.
 - `st_ctime:` Time of last status change.
+
+<br><br>
+
+## Example of use:
+This example demonstrates how to use _fstatFile to obtain information about a file, using a file descriptor previously obtained by _openFile.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+    stat_buf times 144 db 0
+
+
+
+section .text
+    global _start
+    extern _openFile
+    extern _fstatFile
+    extern _closeFile
+
+
+_start:
+    mov rdi, file_path
+    xor rsi, rsi
+    call _openFile
+
+    test rax, rax
+    js error
+
+    mov rdi, rax
+    mov rsi, stat_buf
+    call _fstatFile
+    
+    test rax, rax
+    js error
+
+    mov rax, [stat_buf + 48]
+    mov rdi, rax
+    call _closeFile
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
