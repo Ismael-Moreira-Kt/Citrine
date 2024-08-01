@@ -16,3 +16,9 @@ _fstatFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Descritor de arquivo (file descriptor) do arquivo sobre o qual deseja obter informações.
+- **rsi:** Ponteiro para a estrutura stat onde as informações do arquivo serão armazenadas.
