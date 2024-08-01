@@ -62,3 +62,9 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Additional Notes:
+- The _setPermissions function should be used with caution, especially on multi-user systems, as inappropriate permissions can expose sensitive files to unauthorized access.
+- The code above assumes that octal format is used to define permissions. Make sure permissions are correctly configured to avoid security issues.
