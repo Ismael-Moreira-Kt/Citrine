@@ -9,3 +9,4 @@
 | [Set Permissions](./SetPermissions.md)  | Documentation on adding permissions to files.                                           |
 | [Remove File](./RemoveFiles.md)         | Documentation for removing files.                                                       |
 | [Access File](./AccessFile.md)          | Documentation of the function that checks the existence of files and their permissions. |
+| [File Stats](./FileStats.md)            | Documentation of the proper way to receive information from a file.                     |
