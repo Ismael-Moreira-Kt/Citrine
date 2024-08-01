@@ -25,3 +25,37 @@ _unlinkFile:
 
 #### Valor de Retorno:
 - **rax:** Se a syscall for bem-sucedida, rax conterá 0. Em caso de erro, rax conterá um valor negativo correspondente ao código de erro.
+
+<br><br>
+
+## Exemplo de Uso:
+Este exemplo demonstra como usar _unlinkFile para deletar um arquivo do sistema de arquivos.
+
+```asm
+section .data
+    file_path db 'example.txt', 0
+
+
+
+section .text
+    global _start
+    extern _unlinkFile
+
+
+_start:
+    mov rdi, file_path
+    call _unlinkFile
+
+    test rax, rax
+    js error
+
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+error:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+```
