@@ -16,3 +16,13 @@ _accessFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Parâmetros Esperados:
+- **rdi:** Ponteiro para a string contendo o caminho do arquivo que será verificado.
+- **rsi:** Flags de verificação de acessibilidade. Valores comuns incluem:
+    - **0:** Verifica a existência do arquivo.
+    - **1:** Verifica se o arquivo é executável.
+    - **2:** Verifica se o arquivo é gravável.
+    - **4:** Verifica se o arquivo é legível.
