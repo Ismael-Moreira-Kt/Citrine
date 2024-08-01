@@ -16,3 +16,9 @@ _setPermissions:
     syscall
     ret
 ```
+
+<br>
+
+#### Expected Parameters:
+- **rdi:** Pointer to the string containing the path of the file whose permission mode will be changed.
+- **rsi:** New set of permissions in octal format (e.g. 0755 for read, write and execute by owner and read and execute for group and others).
