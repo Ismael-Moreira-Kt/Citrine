@@ -6,4 +6,4 @@
 | [Ler Ficheiros](./LerFicheiros.md)                      | Documenta a leitura de arquivos.                      |
 | [Escrever Ficheiros](./EscreverFicheiros.md)            | Documenta a forma de escrever em ficheiros.           |
 | [Fechar Ficheiros](./FecharFicheiros.md)                | Documenta a forma de fechar ficheiros.                |
-| [Definir Permissões](./Definir-Permissões.md)           | Documenta a forma de definir permissões em ficheiros. |
+| [Definir Permissões](./DefinirPermissões.md)            | Documenta a forma de definir permissões em ficheiros. |
