@@ -75,3 +75,9 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Notas Adicionais:
+- A função _closeFile deve ser chamada sempre que um arquivo não for mais necessário para liberar o descritor de arquivo e evitar vazamentos de recursos.
+- Verifique o valor de retorno de _closeFile para garantir que o arquivo foi fechado corretamente, especialmente em casos críticos onde a falha em fechar um arquivo pode ter consequências.
