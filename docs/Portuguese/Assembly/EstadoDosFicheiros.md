@@ -94,3 +94,9 @@ error:
     xor rdi, rdi
     syscall
 ```
+
+<br><br>
+
+## Notas Adicionais:
+- A função _fstatFile é essencial para coletar informações detalhadas sobre um arquivo aberto, sem precisar fechar e reabrir o arquivo.
+- O exemplo acima inclui apenas a leitura do tamanho do arquivo, mas você pode acessar qualquer outra informação disponível na estrutura stat utilizando os offsets corretos.
