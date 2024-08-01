@@ -20,3 +20,5 @@ _closeFile:
 
 #### Expected Parameters:
 - **rdi:** File descriptor obtained previously, for example, through the _openFile function.
+
+<br>
