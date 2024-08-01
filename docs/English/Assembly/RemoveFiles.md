@@ -15,3 +15,8 @@ _unlinkFile:
     syscall
     ret
 ```
+
+<br>
+
+#### Expected Parameters:
+- **rdi:** Pointer to the string containing the path of the file that will be removed.
