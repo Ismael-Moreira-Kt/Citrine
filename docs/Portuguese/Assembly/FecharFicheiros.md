@@ -1,0 +1,2 @@
+# _closeFile
+A função _closeFile fecha um arquivo aberto no sistema Linux utilizando a syscall close. A função assume que o descritor do arquivo a ser fechado está configurado no registrador apropriado antes da execução.
