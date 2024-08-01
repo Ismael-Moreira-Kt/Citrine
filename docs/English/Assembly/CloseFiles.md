@@ -6,7 +6,7 @@ The _closeFile function closes an open file on the Linux system using the close 
 ## Implementation Details:
 - **Syscall Number:** 3
 - **Registers Used:**
-    - `rax:` Stores the syscall number (3 for close).
+    - `rax:` Stores the syscall number.
     - `rdi:` Descriptor of the file to be closed.
 
 ```asm
